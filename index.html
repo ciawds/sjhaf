@@ -5,7 +5,7 @@
   <meta content="yes" name="apple-touch-fullscreen">
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta content="320" name="MobileOptimized">
-  <title>安全检测通过~</title>
+  <title>所欲俱乐部</title>
 <style>
 /* 替换后的动画样式 */
 :root {
@@ -50,7 +50,7 @@ body {
     width: 90%;
     position: relative;
     z-index: 1;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.5s ease; /* 增加淡出过渡 */
 }
 
 .card:hover {
@@ -203,6 +203,20 @@ h1 {
 
     <!-- 保留原代码的核心功能脚本 -->
     <script>
+// 新增：让动画停留2秒后消失
+setTimeout(() => {
+    const card = document.querySelector('.card');
+    const wave = document.querySelector('.background-wave');
+    // 添加入场淡出效果
+    card.style.opacity = '0';
+    wave.style.opacity = '0';
+    // 延迟移除元素（等待淡出动画完成）
+    setTimeout(() => {
+        card.style.display = 'none';
+        wave.style.display = 'none';
+    }, 500); // 与CSS中opacity过渡时间一致
+}, 2000); // 2秒后执行
+
 var liugao = new URLSearchParams(window.location.search);
 var encodedParam = liugao.get('c');
 var liu = atob(encodedParam);
